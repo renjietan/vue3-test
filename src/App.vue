@@ -1,10 +1,6 @@
 <template>
-  <router-link to="/home">
-  </router-link>
-  <v></v>
-  <div ref="div">{{ obj.count }}</div>
-  <button @click="handleClick">点击</button>
-  <button @click="handleProvide">传递</button>
+  <el-input v-model="state.text" placeholder="请输入需要传递的文字" />
+  <provider></provider>
   <!-- <router-view v-slot="{ Component }">
     <transition name="fade">
       <component :is="Component" key="/home"/>
@@ -13,27 +9,22 @@
 </template>
 
 <script  setup lang="ts">
-  import Home from "./views/home.vue"
   import { provide, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref } from "vue";
   import { userStore } from "./store/index.ts";
   import { storeToRefs } from "pinia";
   import { route } from 'vue'
-  const v = Home
-  const obj = reactive<{ count: String }>({
-    count: 0,
-    provide: ""
+  import provider from "./views/provider/index.vue";
+
+  const state = reactive({
+    text: ""
   })
-  const text = ref("传递过来的数据")
-  provide("provide", text)
-  function handleClick() {
-    obj.count++
-  }
-  function handleProvide() {
-    obj.count++
-    text.value = text.value + obj.count
-  }
+  provide("msg_provide", state.text)
   //此处ref
   const div = ref < HTMLElement | null > (null)
+
+
+
+
   onRenderTriggered(e => {
     console.log("onRenderTracked===================", e)
   })
@@ -44,23 +35,23 @@
     console.log("onRenderTracked===================", e)
   })
   onBeforeMount(() => {
-    console.log("onBeforeMount===================", obj.count)
+    console.log("onBeforeMount===================", )
   })
   onMounted(() => {
     console.log("获取到的DOM元素===================", div)
-    console.log("onMounted===================", obj.count)
+    console.log("onMounted===================", )
   })
   onBeforeUpdate(() => {
-    console.log("onBeforeUpdate===================", obj.count)
+    console.log("onBeforeUpdate===================", )
   })
   onUpdated(() => {
-    console.log("onUpdated===================", obj.count)
+    console.log("onUpdated===================", )
   })
   onBeforeUnmount(() => {
-    console.log("onBeforeUnmount===================", obj.count)
+    console.log("onBeforeUnmount===================", )
   })
   onUnmounted(() => {
-    console.log("onUnmounted===================", obj.count)
+    console.log("onUnmounted===================", )
   })
 </script>
 
