@@ -1,9 +1,9 @@
 <template>
-    <son class="child"></son>
+    <div>
+        <son class="child"></son>
+    </div>
 </template>
 <script setup lang="ts">
-    import son from "./components/son.vue"
-    const s = defineComponent({
-        
-    })
+    import son from "./son.vue"
+    import { inject } from 'vue'
 </script>

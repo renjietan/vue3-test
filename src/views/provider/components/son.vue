@@ -1,13 +1,8 @@
 <template>
-    <div class="son">{{ msg }}</div>
+    <div class="son">{{ msg.text }}son</div>
 </template>
-<script lang="ts">
-    import { inject, defineComponent } from 'vue'
-    export default defineComponent({
-        name: "son",
-        setup(props) {
-
-        }
-    })
+<script setup lang="ts">
+    import { inject } from 'vue'
     const msg = inject("msg_provide")
+    
 </script>

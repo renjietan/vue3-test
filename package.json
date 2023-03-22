@@ -22,6 +22,17 @@
     "unplugin-auto-import": "^0.15.1",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.2.0",
-    "vue-tsc": "^1.2.0"
+    "vue-tsc": "^1.2.0",
+    "@types/node": "^18.11.13",
+    "@types/nprogress": "^0.2.0",
+    "@types/sortablejs": "^1.15.0",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
+    "@vue/compiler-sfc": "^3.2.45",
+    "eslint": "^8.29.0",
+    "eslint-plugin-vue": "^9.8.0",
+    "prettier": "^2.8.1",
+    "vite-plugin-vue-setup-extend": "^0.4.0",
+    "vue-eslint-parser": "^9.1.0"
   }
 }

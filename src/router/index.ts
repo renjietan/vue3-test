@@ -10,6 +10,11 @@ let routes = [
         name: 'TodoList',
         component: () => import('../views/TodoList/index.vue')
     },
+    {
+        path: '/ref',
+        name: 'ref',
+        component: () => import('../views/ref/index.vue')
+    }
     //{
     //配置404页面
     //path: '/:catchAll(.*)',

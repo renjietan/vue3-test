@@ -1,6 +1,8 @@
 <template>
   <el-input v-model="state.text" placeholder="请输入需要传递的文字" />
   <provider></provider>
+  <todo-list></todo-list>
+  <Ref></Ref>
   <!-- <router-view v-slot="{ Component }">
     <transition name="fade">
       <component :is="Component" key="/home"/>
@@ -9,21 +11,20 @@
 </template>
 
 <script  setup lang="ts">
-  import { provide, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref } from "vue";
+  import { provide,watch, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref } from "vue";
   import { userStore } from "./store/index.ts";
   import { storeToRefs } from "pinia";
   import { route } from 'vue'
   import provider from "./views/provider/index.vue";
-
+  import TodoList from "./views/TodoList/index.vue";
+  import Ref from "./views/ref/index.vue";
   const state = reactive({
     text: ""
   })
-  provide("msg_provide", state.text)
+
+  provide("msg_provide", state)
   //此处ref
   const div = ref < HTMLElement | null > (null)
-
-
-
 
   onRenderTriggered(e => {
     console.log("onRenderTracked===================", e)

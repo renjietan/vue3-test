@@ -5,5 +5,4 @@
 </template>
 <script setup lang="ts">
     import Child from "./components/child.vue"
-    
 </script>
