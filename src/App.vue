@@ -1,58 +1,44 @@
 <template>
-  <el-input v-model="state.text" placeholder="请输入需要传递的文字" />
-  <provider></provider>
-  <todo-list></todo-list>
-  <Ref></Ref>
-  <!-- <router-view v-slot="{ Component }">
-    <transition name="fade">
-      <component :is="Component" key="/home"/>
-    </transition>
-   </router-view> -->
+  <el-input v-model="text"></el-input>
+  <v-model v-model:text="text"></v-model>  
 </template>
 
-<script  setup lang="ts">
-  import { provide,watch, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref } from "vue";
+<script setup lang="ts">
+  import { watch,provide, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref, } from "vue";
   import { userStore } from "./store/index.ts";
   import { storeToRefs } from "pinia";
   import { route } from 'vue'
   import provider from "./views/provider/index.vue";
   import TodoList from "./views/TodoList/index.vue";
+  import vModel from "./views/vModel/index.vue";
   import Ref from "./views/ref/index.vue";
-  const state = reactive({
-    text: ""
-  })
-
-  provide("msg_provide", state)
-  //此处ref
-  const div = ref < HTMLElement | null > (null)
-
+  import card from "./views/card/index.vue";
+  const isShow = ref<Boolean>(true)
+  const text = ref<String>("")
   onRenderTriggered(e => {
     console.log("onRenderTracked===================", e)
   })
   onRenderTracked((e) => {
     console.log("onRenderTracked===================", e)
   })
-  onRenderTracked((e) => {
-    console.log("onRenderTracked===================", e)
-  })
   onBeforeMount(() => {
-    console.log("onBeforeMount===================", )
+    console.log("onBeforeMount===================",)
   })
   onMounted(() => {
-    console.log("获取到的DOM元素===================", div)
-    console.log("onMounted===================", )
+    console.log("获取到的DOM元素===================",)
+    console.log("onMounted===================",)
   })
   onBeforeUpdate(() => {
-    console.log("onBeforeUpdate===================", )
+    console.log("onBeforeUpdate===================",)
   })
   onUpdated(() => {
-    console.log("onUpdated===================", )
+    console.log("onUpdated===================",)
   })
   onBeforeUnmount(() => {
-    console.log("onBeforeUnmount===================", )
+    console.log("onBeforeUnmount===================",)
   })
   onUnmounted(() => {
-    console.log("onUnmounted===================", )
+    console.log("onUnmounted===================",)
   })
 </script>
 
