@@ -7,3 +7,6 @@
         <router-view name="name3"></router-view>
     </div>
 </template>
+<script lang="ts" setup>
+    
+</script>

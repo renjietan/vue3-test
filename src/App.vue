@@ -28,11 +28,10 @@
 
 
 <script setup lang="ts">
-  import { watch, provide, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref, watchEffect, toRaw} from "vue";
-  import { userStore } from "./store/index.ts";
-  import { storeToRefs } from "pinia";
+  import { watch, provide, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref, watchEffect, toRaw } from "vue";
+  import { userStore } from "./store/index";
+  import { storeToRefs,PiniaPluginContext } from "pinia";
   import { useRouter } from "vue-router";
-  import { route } from 'vue'
   import { routes } from "./router";
   import provider from "./views/provider/index.vue";
   import TodoList from "./views/TodoList/index.vue";
@@ -40,7 +39,7 @@
   import Ref from "./views/ref/index.vue";
   import card from "./views/card/index.vue";
   const $router = useRouter()
-  const activeIndex = ref(null)
+  const activeIndex = ref("")
   watch($router.currentRoute, (n, o) => {
     activeIndex.value = n.matched[0].path
   })

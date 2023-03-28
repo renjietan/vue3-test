@@ -1,24 +1,42 @@
 
 import { defineStore } from 'pinia'
+type TUser = {
+    name?: string,
+}
+type TCount = number | null | undefined
 export const userStore = defineStore('userStore', {
     // 相当于data
     state: () => {
         return {
-            userInfo: <object>{
-                name: "1231"
-            }
+            userInfo: <TUser>{
+                name: ""
+            },
+            count: <TCount>0,
         }
     },
     // 相当于计算属性
     getters: {
-        doubleCount: (state) => {
+        GET_USERINFO: (state) => {
             return state.userInfo
         },
+        GET_COUNT: (state) => {
+            return state.count
+        }
     },
-    
+
     actions: {
-        increment(v: object) {
-            this.userInfo = v
+        SET_USERINFO<TUser>(v: TUser): Promise<TUser> {
+            console.log("调用了SET_USERINFO")
+            return new Promise((resolve, rejcet) => {
+                setTimeout(() => {
+                    this.userInfo = v ?? {}
+                    //调用其他action
+                    resolve(v)
+                }, 1500)
+            })
         },
+        SET_COUNT(v: TCount) {
+            this.count = v;
+        }
     },
 })

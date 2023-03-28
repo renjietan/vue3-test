@@ -1,20 +1,27 @@
 <template>
     <div>
-        <el-button @click="handleNav" type="primary">跳转</el-button>
+        {{ user.userInfo }}
+        <el-button v-permission="{value: '111'}" @click="handleNav" type="primary">跳转</el-button>
+        <el-button v-test:1111.TRJ="123123" type="primary">跳转2</el-button>
     </div>
 </template>
 <script setup lang="ts">
     import { useRouter } from "vue-router";
+    import { userStore } from "../../store/index";
+    import { vPermission, vTest } from "../../directives/permission"
     const $router = useRouter()
+    const user = userStore()
     const handleNav = () => {
-        $router.push({
-            path: "/page2",
-            query: {
-                query: 1,
-            },
-            params: {
-                params: 1
-            }
-        })
+        let num = Number(user.userInfo?.name ?? 0)
+        user.userInfo.name = `${ num + 1 }`
+        // $router.push({
+        //     path: "/page2",
+        //     query: {
+        //         query: 1,
+        //     },
+        //     params: {
+        //         params: 1
+        //     }
+        // })
     }
 </script>
