@@ -13,20 +13,20 @@ declare module "vue-router" {
 
 export const routes: Array<RouteRecordRaw> = [
     {
-        path: '/page1',
-        name: 'page1',
+        path: '/',
+        name: 'permission',
         meta: {
-            title: "page1"
+            title: "permission"
         },
-        component: () => import('../views/page1/index.vue')
+        component: () => import('../views/permission/index.vue')
     },
     {
-        path: '/page2',
-        name: 'page2',
+        path: '/form',
+        name: 'form',
         meta: {
-            title: "page2"
+            title: "form"
         },
-        component: () => import('../views/page2/index.vue')
+        component: () => import('../views/form/index.vue')
     },
     {
         path: "/page3",
@@ -109,8 +109,8 @@ const router = createRouter({
             setTimeout(() => {
                 resolve(
                     {
-                        top: savePosition?.top,
-                        left: savePosition?.left,
+                        top: savePosition?.top ?? 0,
+                        left: savePosition?.left ?? 0,
                     }
                 )
             }, 2000)
