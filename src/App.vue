@@ -4,7 +4,7 @@
       text-color="#fff" active-text-color="#ffd04b">
       <el-menu-item :index="item.path" v-for="(item, index) in routes">
         <router-link :to="item.path">
-          {{ item.name }}
+          {{ item.meta?.title }}
         </router-link>
       </el-menu-item>
       <!-- <el-sub-menu index="2">
@@ -28,53 +28,54 @@
 
 
 <script setup lang="ts">
-  import { watch, provide, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref, watchEffect, toRaw } from "vue";
-  import { userStore } from "./store/index";
-  import { storeToRefs,PiniaPluginContext } from "pinia";
-  import { useRouter } from "vue-router";
-  import { routes } from "./router";
-  import provider from "./views/provider/index.vue";
-  import TodoList from "./views/TodoList/index.vue";
-  import vModel from "./views/vModel/index.vue";
-  import Ref from "./views/ref/index.vue";
-  import card from "./views/card/index.vue";
-  const $router = useRouter()
-  const activeIndex = ref("")
-  watch($router.currentRoute, (n, o) => {
-    activeIndex.value = n.matched[0].path
-  })
-  onRenderTriggered(e => {
-    console.log("onRenderTracked===================", e)
-  })
-  onRenderTracked((e) => {
-    console.log("onRenderTracked===================", e)
-  })
-  onBeforeMount(() => {
-    console.log("onBeforeMount===================",)
-  })
-  onMounted(() => {
-    console.log("获取到的DOM元素===================",)
-    console.log("onMounted===================",)
-  })
-  onBeforeUpdate(() => {
-    console.log("onBeforeUpdate===================",)
-  })
-  onUpdated(() => {
-    console.log("onUpdated===================",)
-  })
-  onBeforeUnmount(() => {
-    console.log("onBeforeUnmount===================",)
-  })
-  onUnmounted(() => {
-    console.log("onUnmounted===================",)
-  })
+import { watch, provide, onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onUnmounted, onBeforeUnmount, reactive, onRenderTracked, onRenderTriggered, ref, watchEffect, toRaw } from "vue";
+import { userStore } from "./store/index";
+import { storeToRefs, PiniaPluginContext } from "pinia";
+import { useRouter } from "vue-router";
+import { routes } from "./router";
+import provider from "./views/provider/index.vue";
+import TodoList from "./views/TodoList/index.vue";
+import vModel from "./views/vModel/index.vue";
+import Ref from "./views/ref/index.vue";
+import card from "./views/card/index.vue";
+const $router = useRouter()
+const activeIndex = ref("")
+watch($router.currentRoute, (n, o) => {
+  activeIndex.value = n.matched[0].path
+})
+
+onRenderTriggered(e => {
+  console.log("onRenderTracked===================", e)
+})
+onRenderTracked((e) => {
+  console.log("onRenderTracked===================", e)
+})
+onBeforeMount(() => {
+  console.log("onBeforeMount===================",)
+})
+onMounted(() => {
+  console.log("获取到的DOM元素===================",)
+  console.log("onMounted===================",)
+})
+onBeforeUpdate(() => {
+  console.log("onBeforeUpdate===================",)
+})
+onUpdated(() => {
+  console.log("onUpdated===================",)
+})
+onBeforeUnmount(() => {
+  console.log("onBeforeUnmount===================",)
+})
+onUnmounted(() => {
+  console.log("onUnmounted===================",)
+})
 </script>
 
 <style scoped>
-  .container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 </style>

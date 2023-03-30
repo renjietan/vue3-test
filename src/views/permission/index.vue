@@ -1,8 +1,8 @@
 <template>
     <div>
         {{ user.userInfo }}
-        <el-button v-permission="{value: '111'}" @click="handleNav" type="primary">跳转</el-button>
-        <el-button v-test:1111.TRJ="123123" type="primary">跳转2</el-button>
+        <el-button v-permission="{value: '111'}" @click="handleNav" type="primary">加到100 按钮隐藏</el-button>
+        <el-button v-test:1111.TRJ="123123" type="primary">指令集修饰符以及参数</el-button>
     </div>
 </template>
 <script setup lang="ts">

@@ -16,7 +16,7 @@ export const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'permission',
         meta: {
-            title: "permission"
+            title: "权限指令集"
         },
         component: () => import('../views/permission/index.vue')
     },
@@ -24,7 +24,7 @@ export const routes: Array<RouteRecordRaw> = [
         path: '/form',
         name: 'form',
         meta: {
-            title: "form"
+            title: "表单"
         },
         component: () => import('../views/form/index.vue')
     },
@@ -32,7 +32,7 @@ export const routes: Array<RouteRecordRaw> = [
         path: "/page3",
         name: "page3",
         meta: {
-            title: "page3"
+            title: "redirect重定向"
         },
         component: () => import("../views/page3/index.vue"),
         redirect: (to) => {
@@ -64,7 +64,7 @@ export const routes: Array<RouteRecordRaw> = [
         name: "page4",
         component: () => import("../views/page4/index.vue"),
         meta: {
-            title: "page4"
+            title: "一个路由多个组件"
         },
         redirect: "/page4/Name1AndName2",
         children: [{
@@ -93,23 +93,46 @@ export const routes: Array<RouteRecordRaw> = [
         path: '/images',
         name: 'images',
         meta: {
-            title: "images"
+            title: "图片懒加载"
         },
         component: () => import('../views/images/index.vue')
+    },
+    {
+        path: "/hooks",
+        meta: {
+            title: "hooks"
+        },
+        component: () => import('../views/hooks/index.vue')
+    },
+    {
+        path: '/全局变量和当前实例',
+        name: '全局变量和当前实例',
+        meta: {
+            title: "全局变量和当前实例"
+        },
+        component: () => import('../views/全局变量和当前实例/index.vue')
+    },
+    {
+        path: '/$bus',
+        name: '$bus',
+        meta: {
+            title: "BUS总线"
+        },
+        component: () => import('../views/$bus/index.vue')
     },
 ]
 // 路由
 const router = createRouter({
     history: createWebHistory(),
     routes,
-    scrollBehavior: (to, from, savePosition) => {
+    scrollBehavior: (to: any, from: any, savePosition: { top: any; left: any; }) => {
         // NOTE(2023-03-28 14:30:52 谭人杰): 记录页面的滚动值
         // NOTE(2023-03-28 14:30:21 谭人杰): 支持同步 也支持异步
         return new Promise((resolve) => {
             setTimeout(() => {
                 resolve(
                     {
-                        top: savePosition?.top ?? 0,
+                        top: savePosition?.top,
                         left: savePosition?.left ?? 0,
                     }
                 )
@@ -118,12 +141,12 @@ const router = createRouter({
     }
 })
 // NOTE(2023-03-28 11:49:19 谭人杰): 前置路由守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach((to:any, from: any, next: () => void) => {
     document.title = to.meta.title ?? "";
     next()
 })
 // NOTE(2023-03-28 11:49:19 谭人杰): 后置路由守卫
-router.afterEach((to, from, next) => {
+router.afterEach((to: any, from: any, next: any) => {
 })
 // 导出
 export default router

@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-    import { reactive, ref } from 'vue'
+    import { reactive, ref, useAttrs } from 'vue'
     const state = ref([{
         name: "谭仁杰2020",
     },{
@@ -19,4 +19,7 @@
     },{
         name: "谭仁杰2023",
     }])
+    // NOTE(2023-03-30 19:31:15 谭人杰): 获取父组件传过来的所有参数
+    const u = useAttrs()
+    debugger
 </script>

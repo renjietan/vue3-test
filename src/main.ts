@@ -5,6 +5,7 @@ import router from "./router";
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import { createPinia, PiniaPluginContext } from "pinia";
+const app = createApp(App)
 
 const setStroage = (key: string, value: any) => {
     localStorage.setItem(key, JSON.stringify(value))
@@ -26,4 +27,13 @@ const piniaPlugins = (context: PiniaPluginContext) => {
 }
 const pinia = createPinia()
 pinia.use(piniaPlugins)
-createApp(App).use(pinia).use(router).use(ElementPlus).mount('#app')
+const r = import.meta.glob("./filters/*.*")
+const md = Object.values(r)
+type Filter = {
+    formatStr<T>(str: T): T
+}
+md.forEach(async item => {
+    const s: Filter = await item() as Filter
+    app.config.globalProperties.$filters = s
+})
+app.use(pinia).use(router).use(ElementPlus).mount('#app')
