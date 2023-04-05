@@ -41,9 +41,8 @@ import card from "./views/card/index.vue";
 const $router = useRouter()
 const activeIndex = ref("")
 watch($router.currentRoute, (n, o) => {
-  activeIndex.value = n.matched[0].path
+  activeIndex.value = encodeURIComponent(n.path)
 })
-
 onRenderTriggered(e => {
   console.log("onRenderTracked===================", e)
 })

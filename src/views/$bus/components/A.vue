@@ -6,7 +6,10 @@
 
 <script lang="ts" setup>
 import Bus from "../$bus"
+import { getCurrentInstance } from  "vue"
+const _this = getCurrentInstance()
+const $bus = _this?.proxy?.$bus
 const handleClick = () => {
-    Bus.$emit("query", `我是A组件出来过来的值${Math.random()}`)
+    $bus.$emit("query", `我是A组件出来过来的值${Math.random()}`)
 }
 </script>

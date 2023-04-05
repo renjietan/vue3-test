@@ -16,8 +16,7 @@ class Bus implements $bus {
     $emit(name: string, ...args: Array<any>) {
         let events:Array<Function> = this.list[name] || []
         events.forEach(fn => {
-            debugger
-            fn.apply(this, ...args)
+            fn.apply(this, args)
         })
     }
     $on(name: string, callback: Function) {

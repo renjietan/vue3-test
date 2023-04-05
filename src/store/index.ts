@@ -26,7 +26,6 @@ export const userStore = defineStore('userStore', {
 
     actions: {
         SET_USERINFO<TUser>(v: TUser): Promise<TUser> {
-            console.log("调用了SET_USERINFO")
             return new Promise((resolve, rejcet) => {
                 setTimeout(() => {
                     this.userInfo = v ?? {}

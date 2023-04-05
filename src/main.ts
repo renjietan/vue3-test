@@ -5,8 +5,12 @@ import router from "./router";
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import { createPinia, PiniaPluginContext } from "pinia";
-const app = createApp(App)
+import Bus from "./views/$bus/$bus"
+import "@/styles/index.css"
+import 'uno.css'
 
+const app = createApp(App)
+app.config.globalProperties.$bus = Bus
 const setStroage = (key: string, value: any) => {
     localStorage.setItem(key, JSON.stringify(value))
 }

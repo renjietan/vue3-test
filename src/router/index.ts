@@ -120,6 +120,47 @@ export const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('../views/$bus/index.vue')
     },
+    {
+        path: '/ysct',
+        name: 'ysct',
+        meta: {
+            title: "样式穿透"
+        },
+        component: () => import('../views/样式穿透/index.vue')
+    },
+    {
+        path: '/Tailwind-CSS',
+        name: 'Tailwind-CSS',
+        meta: {
+            title: "Tailwind-CSS"
+        },
+        component: () => import('../views/Tailwind-CSS/index.vue')
+    },
+    {
+        path: '/unocss',
+        name: 'unocss',
+        meta: {
+            title: "unocss"
+        },
+        component: () => import('../views/unocss/index.vue')
+    },
+    {
+        path: '/h',
+        name: 'h',
+        meta: {
+            title: "h"
+        },
+        component: () => import('../views/h/index.vue')
+    },
+    {
+        path: '/vue3响应性新特性',
+        name: 'vue3响应性新特性',
+        meta: {
+            title: "vue3响应性新特性"
+        },
+        component: () => import('../views/vue3响应性新特性/index.vue')
+    },
+    
 ]
 // 路由
 const router = createRouter({
